@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { callforLgoing } from '../../api/schoolLoginApi';
 import { AppContext } from '../../context/AppContext';
+import MainDrawer from '../main/MainDrawer';
 
 export default function LoginTab(props) {
   const [schoolId , setSchoolId] = React.useState("");
@@ -53,18 +54,14 @@ export default function LoginTab(props) {
 
   }
   return (
-  
-    <div style={props.dispLayValue()}>
+
+    <div >
        <div style={{width:'95%'}}>{isLogedIn ?<h4>{loogedInSchoolDetails.schoolname}</h4> :<h4>LOGIN</h4>}</div>
         {isLogedIn ? 
         <div> 
-            {/* <h4>{loogedInSchoolDetails.schoolname}</h4> */}
-            {/* <div>{loogedInSchoolDetails.schoolname}</div> */}
-            <div> 
-                <Button onClick = {logoutCurrentSchool} variant="contained" size="large" >Logout</Button>
-                {/* <button onClick = {logoutCurrentSchool}>Logout</button> */}
-            </div>
-        </div> :
+            <MainDrawer/>
+        </div> 
+        :
         <div>
         <Box style={{marginLeft:'400px'}}>
             <Box 

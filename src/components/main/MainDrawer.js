@@ -28,6 +28,7 @@ import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 import LiveTvTwoToneIcon from '@mui/icons-material/LiveTvTwoTone';
 import NotificationTab from '../Tabs/NotificationTab';
 import Avatar from '@mui/material/Avatar';
+import LogoutPrompt from '../Tabs/Utility/LogoutPrompt';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -97,11 +98,35 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function MainDrawer() {
   const theme = useTheme();
+
+  const [logoutPromptOpen, setLogoutPromptOpen] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const {selectedTab , SetselectedTab , isHomeTabVisible , setIsHomeTabVisible ,isStudentTabVisible, setIsStudentTabVisible,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,setIsLogedIn,isLogedIn ,isLiveClassesTabVisible,setIsLiveClassesTabVisible ,isNotificationTabVisible,setIsNotificationTabVisible ,notificationList,setNotificationList} = React.useContext(AppContext);
+  const {selectedTab , SetselectedTab , isHomeTabVisible , setIsHomeTabVisible ,isStudentTabVisible, setIsStudentTabVisible,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,setIsLogedIn,isLogedIn ,isLiveClassesTabVisible,setIsLiveClassesTabVisible ,isNotificationTabVisible,setIsNotificationTabVisible ,notificationList,setNotificationList,logeedInAuthToken, setLoggedInAuthToken, loogedInSchoolDetails , setLoggedInSchoolDetails, setLiveStudentList} = React.useContext(AppContext);
+
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const tabName = ['Home', 'Student', 'Notice-Board', 'Live-Classes'];
+
+
+  const logoutPrompt = () => {
+    setLogoutPromptOpen(true);
+  }
+
+  
+
+  const logoutCurrentSchool = () =>{
+    setLoggedInAuthToken("");
+    setLoggedInSchoolDetails({});
+    setIsLogedIn(false);
+    setLiveStudentList([]);
+    setNotificationList([]);
+    
+  }
+
+  const handleClose = () => {
+    setLogoutPromptOpen(false)
+    console.log('logoutPromptOpen - '+open)
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -267,9 +292,9 @@ export default function MainDrawer() {
         </List>
         <Divider />
         <List>
-          {['Login'].map((text, index) => (
+          {['Logout'].map((text, index) => (
             <ListItemButton
-              onClick={setSelectedTab} data-tabname={text}
+              onClick={logoutPrompt} data-tabname={text}
               key={text}
               sx={{
                 minHeight: 48,
@@ -291,11 +316,12 @@ export default function MainDrawer() {
           ))}
         </List>
       </Drawer>
+       <LogoutPrompt logoutPromptOpen = {logoutPromptOpen} handleClose={handleClose} logoutCurrentSchool={logoutCurrentSchool}/>
+      
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <HomeTab dispLayValue ={dynamicDisplayStyle}></HomeTab>
         <StudentTab dispLayValue ={dynamicDisplayStyleForStudent} ></StudentTab>
-        <LoginTab dispLayValue ={dynamicDisplayStyleForLogin}></LoginTab>
         <LiveClassesTab dispLayValue={dynamicDisplayStyleForLiveClasses}></LiveClassesTab>
         <NotificationTab dispLayValue={dynamicDisplayStyleForNotification}></NotificationTab>
       </Box>

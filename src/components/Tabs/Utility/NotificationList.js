@@ -18,7 +18,6 @@ export default function NotificationList(props) {
         <caption>Notification List</caption>
         <TableHead>
           <TableRow>
-            <TableCell>School-Id</TableCell>
             <TableCell align="right">Class</TableCell>
             <TableCell align="right">Title&nbsp;</TableCell>
             <TableCell align="right">Notice&nbsp;</TableCell>
@@ -30,10 +29,7 @@ export default function NotificationList(props) {
         <TableBody>
           {props.notificationList.map((row) => (
             <TableRow key={row._id}>
-              <TableCell component="th" scope="row">
-                {row.schoolId}
-              </TableCell>
-              <TableCell align="right">{row.class}</TableCell>
+              <TableCell align="right">Class {row.class}th</TableCell>
               <TableCell align="right">{row.title}</TableCell>
               <TableCell align="right">
                   {/* {row.notice} */}

@@ -24,7 +24,6 @@ export default function LiveClassesList(props) {
         <caption>Live Classes List</caption>
         <TableHead>
           <TableRow>
-            <TableCell>SchoolCode</TableCell>
             <TableCell align="right">Class</TableCell>
             <TableCell align="right">Subject&nbsp;</TableCell>
             <TableCell align="right">Topic&nbsp;</TableCell>
@@ -36,10 +35,7 @@ export default function LiveClassesList(props) {
         <TableBody>
           {props.liveClassesList.map((row) => (
             <TableRow key={row.schoolCode}>
-              <TableCell component="th" scope="row">
-                {row.schoolCode}
-              </TableCell>
-              <TableCell align="right">{row.class}</TableCell>
+              <TableCell align="right">Class {row.class}th</TableCell>
               <TableCell align="right">{row.subject}</TableCell>
               <TableCell align="right">{row.topic}</TableCell>
               <TableCell align="right">{row.videoMeetUrl}</TableCell>
