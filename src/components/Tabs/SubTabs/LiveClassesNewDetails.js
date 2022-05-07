@@ -43,7 +43,7 @@ export default function LiveClassesNewDetails(props) {
 
   return (
     <div name="liveClassesForm">
-       <h4> LIVE CLASSES </h4>
+       <h2> LIVE CLASSES </h2>
         <div> <LiveClassesSubTabs/></div>
         <BasicAlert displayValueForAlert={displayValueForAlert}/>
         <AddLive saveLiveClassesDetail ={props.saveLiveClassesDetail}  dynamicDisplayStyleForLiveAddNew={dynamicDisplayStyleForLiveAddNew}> </AddLive>

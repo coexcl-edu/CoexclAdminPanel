@@ -10,7 +10,7 @@ import BasicSelect from '../../DropDown/BasicSelect';
 import { AppContext } from '../../../context/AppContext';
 
 export default function AddLive(props) {
-    const {datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,topic ,setTopic,duration ,setDuration ,teacherName ,setTeacherName ,description ,setDescription ,meetingUrl ,setMeetingUrl} =React.useContext(AppContext);
+    const {datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,topic ,setTopic,duration ,setDuration ,teacherName ,setTeacherName ,description ,setDescription ,meetingUrl ,setMeetingUrl ,liveClassDateValue ,setLiveClassDateValue} = React.useContext(AppContext);
   
     const onUrlChange = (event)=>{
         //alert(event.target.value);
@@ -32,6 +32,12 @@ export default function AddLive(props) {
         //alert(event.target.value);
         setDescription(event.target.value);
 
+    }
+    const onDateupdated=(event)=>{
+        //alert(event.target.value);
+        setLiveClassDateValue(event.target.value);
+
+        console.log("data - "+event.target.value);
     }
 
   
@@ -95,7 +101,15 @@ export default function AddLive(props) {
                         maxWidth: '100%',
                     }}
                     >
-                Start Time : <DateTimePicker onChange={onchangeDateAndTimePicker} value={datAndTimePicker} />
+            <TextField
+                id="datetime-local"
+                label="Start Time"
+                type="datetime-local"
+                onChange={onDateupdated}
+                defaultValue='2017-05-24T10:30'
+                sx={{ width: 250 }}
+                InputLabelProps={{shrink: true,}}/>
+                {/* Start Time : <DateTimePicker onChange={onchangeDateAndTimePicker} value={datAndTimePicker} /> */}
                 </Box>
             </div>
             
@@ -119,6 +133,8 @@ export default function AddLive(props) {
                 }}
                 >
             <Button style={{marginLeft:'200px'}} variant="contained" size="large" onClick={props.saveLiveClassesDetail}>Save Details</Button> </Box>
+
+           
         </div>
   )
 }

@@ -119,7 +119,7 @@ export default function SignIn() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="School Code"
                 name="email"
                 autoComplete="email"
                 autoFocus

@@ -41,10 +41,13 @@ export default function AppMain() {
   const [isListLiveActive ,setIsListLiveActive] = React.useState(true);
   const [isAddNewLiveActive ,setIsAddNewLiveActive] = React.useState(false);
   const [isDisplayAlert, setIsDisplayAlert] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
+  const [openLiveClassModal, setOpenLiveClassModal] = React.useState(false);
+  const [liveClassDateValue ,setLiveClassDateValue] = React.useState("");
 
   return (
     <>
-    <AppContext.Provider value = {{selectedTab , SetselectedTab ,isLogedIn , setIsLogedIn ,isHomeTabVisible , setIsHomeTabVisible,isStudentTabVisible, setIsStudentTabVisible ,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,logeedInAuthToken, setLoggedInAuthToken,loogedInSchoolDetails , setLoggedInSchoolDetails ,isLiveClassesTabVisible,setIsLiveClassesTabVisible ,datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,isListLiveActive ,setIsListLiveActive , isAddNewLiveActive ,setIsAddNewLiveActive ,liveClassesList,setLiveClassesList ,liveStudentList,setLiveStudentList ,isNotificationTabVisible,setIsNotificationTabVisible,notificationList,setNotificationList ,topic ,setTopic,duration ,setDuration ,teacherName ,setTeacherName ,description ,setDescription ,meetingUrl ,setMeetingUrl,isDisplayAlert, setIsDisplayAlert}}>
+    <AppContext.Provider value = {{selectedTab , SetselectedTab ,isLogedIn , setIsLogedIn ,isHomeTabVisible , setIsHomeTabVisible,isStudentTabVisible, setIsStudentTabVisible ,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,logeedInAuthToken, setLoggedInAuthToken,loogedInSchoolDetails , setLoggedInSchoolDetails ,isLiveClassesTabVisible,setIsLiveClassesTabVisible ,datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,isListLiveActive ,setIsListLiveActive , isAddNewLiveActive ,setIsAddNewLiveActive ,liveClassesList,setLiveClassesList ,liveStudentList,setLiveStudentList ,isNotificationTabVisible,setIsNotificationTabVisible,notificationList,setNotificationList ,topic ,setTopic,duration ,setDuration ,teacherName ,setTeacherName ,description ,setDescription ,meetingUrl ,setMeetingUrl,isDisplayAlert, setIsDisplayAlert, openModal, setOpenModal,openLiveClassModal, setOpenLiveClassModal,liveClassDateValue ,setLiveClassDateValue}}>
       <SignIn/>
     </AppContext.Provider>
     </>

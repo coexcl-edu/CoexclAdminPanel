@@ -27,7 +27,7 @@ export default function StudentTab(props) {
         <div> Please Login </div> 
         :
     <div style={props.dispLayValue()}>
-        <h4> STUDENTS INFORMATION </h4>
+        <h2> STUDENTS INFORMATION </h2>
         {/* <div>Student-List</div> */}
         
         <StudentList liveStudentList={liveStudentList} />

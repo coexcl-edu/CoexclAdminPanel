@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function BasicSelect(props) {
-  const [classValue, setClassValue] = React.useState(7);
+  const [classValue, setClassValue] = React.useState(6);
 
   const handleChange = (event) => {
     setClassValue(event.target.value);

@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect} from 'react';
 import { getNotificationList } from '../../api/notificationApi';
 import { AppContext } from '../../context/AppContext';
+import PostNoticeModal from './Utility/PostNoticeModal';
 import NotificationList from './Utility/NotificationList';
 
 
@@ -27,7 +28,8 @@ export default function NotificationTab(props) {
         <div></div>
         :
             <div style={props.dispLayValue()}>
-                <h4> NOTICE </h4>
+                <h2> NOTICE </h2>
+                <div style={{marginTop:'20px', marginBottom:"20px", alignSelf:'flex-end'}}> <PostNoticeModal /></div>
                 {/* <div>Student-List</div> */}
                 {/* <StudentList liveStudentList={liveStudentList} /> */}
                 <NotificationList notificationList={notificationList} />

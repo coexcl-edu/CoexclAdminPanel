@@ -1,25 +1,33 @@
-import { Button } from '@mui/material';
 import React from 'react'
-import DateTimePicker from 'react-datetime-picker';
 import { AppContext } from '../../context/AppContext';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import BasicSelect from '../DropDown/BasicSelect';
-import SubjectSelect from '../DropDown/SubjectSelect';
-import LiveClassesSubTabs from './SubTabs/LiveClassesSubTabs';
-import LiveClassesNewDetails from './SubTabs/LiveClassesNewDetails';
 import { saveLiveClasses ,getListOfliveClasses} from '../../api/liveClassesApi';
+import PostLiveClass from './Utility/PostLiveClass';
+import ListLive from './SubTabs/ListLive';
+import BasicAlert from './Utility/Alert';
+
 
 export default function LiveClassesTab(props) {
     
 
-const {loogedInSchoolDetails , setLoggedInSchoolDetails,selectedTab , SetselectedTab ,isLogedIn , setIsLogedIn ,isHomeTabVisible , setIsHomeTabVisible,isStudentTabVisible, setIsStudentTabVisible ,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,logeedInAuthToken, setLoggedInAuthToken ,datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,topic ,setTopic,duration ,setDuration ,teacherName ,setTeacherName ,description ,setDescription ,meetingUrl ,setMeetingUrl ,setLiveClassesList ,setIsDisplayAlert ,isLiveClassesTabVisible}= React.useContext(AppContext);
+const {loogedInSchoolDetails , setLoggedInSchoolDetails,selectedTab , SetselectedTab ,isLogedIn , setIsLogedIn ,isHomeTabVisible , setIsHomeTabVisible,isStudentTabVisible, setIsStudentTabVisible ,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,logeedInAuthToken, setLoggedInAuthToken ,datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,topic ,setTopic,duration ,setDuration ,teacherName ,setTeacherName ,description ,setDescription ,meetingUrl ,setMeetingUrl ,setLiveClassesList ,setIsDisplayAlert ,isLiveClassesTabVisible, dateValue ,setDateValue, isDisplayAlert}= React.useContext(AppContext);
 
 function afterSomeTime() {
     setIsDisplayAlert(false);
 }
+
+const displayValueForAlert = () =>{
+    console.log("displayValueForAlert");
+    if(isDisplayAlert){
+      return {display:'block'}
+    }else{
+      return {display:'none'}
+    }
+  }
+
 const saveLiveClassesDetail = ()=>{
     console.log(`Time Details :- ${datAndTimePicker}`);
+    console.log(`Time Details dateValue :- ${dateValue}`);
+    
     if(isLiveClassesTabVisible && datAndTimePicker && className && subject && topic && duration && teacherName && description){
         console.log(datAndTimePicker.getTime());   
         console.log(`ClassName : - ${className}`);
@@ -45,7 +53,12 @@ return (
     {!isLogedIn ?
      <div></div> 
     :
-     <LiveClassesNewDetails saveLiveClassesDetail ={saveLiveClassesDetail}/>
+    <div>
+        <h2> LIVE CLASSES </h2>
+        <BasicAlert displayValueForAlert={displayValueForAlert}/>
+        <div style={{marginTop:'20px', marginBottom:"20px", alignSelf:'flex-end'}}> <PostLiveClass /></div>
+        <ListLive></ListLive>
+     </div> 
     }
 
     </div>

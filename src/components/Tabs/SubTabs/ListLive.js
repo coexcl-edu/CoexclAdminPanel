@@ -4,7 +4,7 @@ import { AppContext } from '../../../context/AppContext';
 import { getListOfliveClasses } from '../../../api/liveClassesApi';
 import LiveClassesList from '../Utility/LiveClassesList';
 
-export default function ListLive(props) {
+export default function ListLive() {
     const {logeedInAuthToken,isLogedIn ,liveClassesList,setLiveClassesList ,isLiveClassesTabVisible} = useContext(AppContext);
     useEffect(() => {
         let abortController = new AbortController(); 
@@ -21,7 +21,7 @@ export default function ListLive(props) {
         
       }}, [isLogedIn,logeedInAuthToken,isLiveClassesTabVisible]);
   return (
-    <div style={props.dynamicDisplayStyleForLiveList()} >
+    <div  >
        <LiveClassesList liveClassesList={liveClassesList} />
     </div>
   )

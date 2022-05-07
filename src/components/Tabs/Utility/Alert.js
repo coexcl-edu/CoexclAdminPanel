@@ -7,7 +7,7 @@ export default function BasicAlert(props) {
      <div style={props.displayValueForAlert()}>
     <Stack sx={{ width: '100%'}} spacing={2}>
       <Alert variant="filled" severity="success">
-        This is a success alert — please check the list of classes!
+        This is a success alert — please check the list!
       </Alert>
     </Stack>
     </div>
