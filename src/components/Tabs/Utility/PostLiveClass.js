@@ -60,39 +60,10 @@ export default function PostLiveClass() {
   const [liveClassDateValue,setLiveClassDateValue] = React.useState("");
   
   const handleOpen = () => setOpenLiveClassModal(true);
-//   const {datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,topic ,setTopic,duration ,setDuration ,teacherName ,setTeacherName ,description ,setDescription ,meetingUrl ,setMeetingUrl ,liveClassDateValue ,setLiveClassDateValue} = React.useContext(AppContext);
-  
-//   const onUrlChange = (event)=>{
-//       //alert(event.target.value);
-//       setMeetingUrl(event.target.value);
-//   }
-//   const onTopicChange = (event)=>{
-//       //alert(event.target.value);
-//       setTopic(event.target.value);
-//   }
-//   const onTeacherNameChange = (event)=>{
-//       //alert(event.target.value);
-//       setTeacherName(event.target.value);
-//   }
-//   const onDurationChange = (event)=>{
-//       //alert(event.target.value);
-//       setDuration(event.target.value);
-//   }
-//   const onDescriptionChange=(event)=>{
-//       //alert(event.target.value);
-//       setDescription(event.target.value);
 
-//   }
-//   const onDateupdated=(event)=>{
-//       //alert(event.target.value);
-//       setLiveClassDateValue(event.target.value);
-
-//       console.log("data - "+event.target.value);
-//   }
-
-function afterSomeTime() {
-    setIsDisplayAlert(false);
-}
+    function afterSomeTime() {
+        setIsDisplayAlert(false);
+    }
 
   const handleClose = () => {
       setOpenLiveClassModal(false);
@@ -104,9 +75,6 @@ function afterSomeTime() {
       setDescription("");
     }
 
-    // const setSubject =(event) => {
-
-    // }
 
   const onChangeInputValue =(event)=>{
     console.log(event.target.id);
@@ -151,30 +119,7 @@ function afterSomeTime() {
     }
 }
 
-//   const saveLiveDetails = () =>{
-   
-//     console.log(topic, subject, meetingUrl, className,description,teacherName,className, duration, liveClassDateValue);
-//     if(topic!=="" && subject !=="" && meetingUrl !=="" && className !=="" &&
-//     description!=="" && teacherName !=="" && className !=="" && liveClassDateValue !=="" ){ 
 
-//         //gonna make a network call title,description,referenceUrl,postedBy,logeedInAuthToken
-//         console.log(className)
-//         // saveNotification(title,description,referenceUrl,className,logeedInAuthToken).then(result =>{
-//         //     console.log(JSON.stringify(result));
-//         //     alert("Notice got saved ");
-//         //     getNotificationList(logeedInAuthToken)
-//         //     .then(result => {
-//         //         console.log(" Notification Details :- "+JSON.stringify(result));
-//         //         setNotificationList(result.data);
-//         //         handleClose();
-                
-//         //     })
-
-//         // })
-//     }else {
-//         alert("please enter all the field value");
-//     }
-//     }
   return (
     <div>
       <Button  variant="contained"  onClick={handleOpen}>+ POST LIVE CLASS</Button>

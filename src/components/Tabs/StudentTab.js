@@ -1,19 +1,20 @@
 import React from 'react'
 import { useEffect ,useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
-import { getListOfStudent } from '../../api/studentApi';
+import { getListOfStudentByClass } from '../../api/studentApi';
 import StudentList from './Utility/StudnetList';
 
 export default function StudentTab(props) {
 
-    const {logeedInAuthToken,isLogedIn ,liveStudentList,setLiveStudentList,isStudentTabVisible} = useContext(AppContext);
+    const {logeedInAuthToken,isLogedIn ,liveStudentList,setLiveStudentList,isStudentTabVisible, className, setClassName } = useContext(AppContext);
     useEffect(() => {
         let abortController = new AbortController();
         if(isLogedIn && isStudentTabVisible){
             console.log("IsLogged In Details :-- "+isLogedIn);
+            console.log("className :-- "+className);
             console.log("logeedInAuthToken "+JSON.stringify(logeedInAuthToken));
         
-            getListOfStudent(logeedInAuthToken)
+            getListOfStudentByClass(logeedInAuthToken,className)
                 .then(result => {
                     console.log(" School Live Classes Details :- "+JSON.stringify(result));
                     setLiveStudentList(result.data);
@@ -30,7 +31,7 @@ export default function StudentTab(props) {
         <h2> STUDENTS INFORMATION </h2>
         {/* <div>Student-List</div> */}
         
-        <StudentList liveStudentList={liveStudentList} />
+        <StudentList liveStudentList={liveStudentList}  setLiveStudentList={setLiveStudentList}/>
     </div>
     }
     </div>

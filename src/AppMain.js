@@ -23,7 +23,7 @@ export default function AppMain() {
   const [loogedInSchoolDetails , setLoggedInSchoolDetails]= React.useState({});
 
   const [datAndTimePicker, onchangeDateAndTimePicker] = React.useState(new Date());
-  const [className, setClassName] = React.useState(7);
+  const [className, setClassName] = React.useState(6);
   const [subject, setSubject] = React.useState("");
 
   const [topic ,setTopic]= React.useState("");

@@ -11,6 +11,7 @@ export default function BasicSelect(props) {
   const handleChange = (event) => {
     setClassValue(event.target.value);
     props.setClassName(event.target.value);
+    props.setSelectedClassName(event.target.value);
   };
 
   return (

@@ -16,14 +16,54 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { getListOfStudent ,getListOfStudentByClass} from '../../../api/studentApi';
 
 
 
 export default function StudentList(props) {
 
-  const {datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue} =React.useContext(AppContext);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const style = {
+    position: 'absolute',
+    top: 0,
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 450,
+    height:'80%',
+    bgcolor: 'background.paper',
+    border: '0px solid #000',
+    boxShadow: 4,
+    p: 4,
+  };
 
+  const style1 = {
+    position: 'absolute',
+    top: '150px',
+    bottom: 0,
+    width: '25%',
+  }
+
+  const style2 =  {
+    position: 'absolute',
+    top: '150px',
+    left: '25%',
+    bottom: 0,
+    marginLeft:'5%',
+    width: '100%',
+  }
+
+  const style3 =  {
+    position: 'absolute',
+    top: '150px',
+    left: '75%',
+    bottom: 0,
+    marginLeft:'5%',
+    width: '25%',
+  }
+  
+
+  const {datAndTimePicker, onchangeDateAndTimePicker,className, setClassName ,subject, setSubject ,liveClassTabsValue, setLiveClassTabsValue ,logeedInAuthToken} =React.useContext(AppContext);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectClassName  ,setSelectedClassName] =React.useState(6);
   
   const handleListItemClick = (event, index, row ) => {
     setSelectedIndex(index);
@@ -39,13 +79,27 @@ export default function StudentList(props) {
   const handleClose = () => {
     setOpen(false);
   };
+  
+  React.useEffect(() => {
+    let abortController = new AbortController();
+    
+        getListOfStudentByClass(logeedInAuthToken,selectClassName)
+            .then(result => {
+                console.log(" Student Details:- "+JSON.stringify(result));
+                props.setLiveStudentList(result.data);
+                abortController.abort();
+            })
+    
+  }
+
+  ,[selectClassName]);
 
     
   return (
     <Box display="flex" sx={{ width: '100%', bgcolor: 'background.paper', marginTop:"10px" }}>
-      <Box flexGrow={1}  sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <BasicSelect setClassName={setClassName}></BasicSelect>
-      <Paper style={{maxHeight: 500, overflow: 'auto'}}>
+      <Box sx={style1}>
+      <BasicSelect setClassName={setClassName} setSelectedClassName={setSelectedClassName}></BasicSelect>
+      <Paper style={{height: "85%", overflowY: 'auto'}}>
         <List component="nav" aria-label="main mailbox folders">
             {props.liveStudentList.map((row) => (
               <ListItemButton
@@ -63,10 +117,13 @@ export default function StudentList(props) {
       </Box>
       
     <div>
+      
     {props.liveStudentList && props.liveStudentList.length? 
         <div >
             <div>
+            <Box sx={style2}>
                 <StudentDetails liveStudent={props.liveStudentList[selectedIndex]}/>
+                </Box>
             </div>
         </div> 
     :null}
@@ -75,9 +132,14 @@ export default function StudentList(props) {
     <div>
     {props.liveStudentList && props.liveStudentList.length?
         <div >
+          <Box sx={style3}>
             <div>
-            <Button sx={{ margin:"20px" }} color="error" variant="outlined" onClick={handleClickOpen}>Remove From School</Button>
+              <Button sx={{ margin:"20px" }} color="error" variant="outlined" onClick={handleClickOpen}>Remove From School</Button>
+              </div>
+              <div>
+              <Button sx={{ marginLeft:"20px" }} disabled="true" color="success" variant="outlined" onClick={handleClickOpen}>Send Message</Button>
             </div>
+            </Box>
         </div> 
     :null}
     </div>
