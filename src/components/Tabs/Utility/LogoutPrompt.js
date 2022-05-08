@@ -7,6 +7,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { calllogout} from '../../../api/schoolLoginApi';
 
 
 
@@ -14,16 +15,18 @@ export default function LogoutPrompt (props) {
 
   let open = props.logoutPromptOpen;
 
-  const {setIsLogedIn,setNotificationList, setLoggedInAuthToken , setLoggedInSchoolDetails, setLiveStudentList} = React.useContext(AppContext);
-  const [logoutPromptOpen, setLogoutPromptOpen] = React.useState(false);
+  const {logeedInAuthToken} = React.useContext(AppContext);
 
 
   const logoutCurrentSchool = () =>{
-    setLoggedInAuthToken("");
-    setLoggedInSchoolDetails({});
-    setIsLogedIn(false);
-    setLiveStudentList([]);
-    setNotificationList([]);
+    let abortController = new AbortController();
+    calllogout(logeedInAuthToken)
+    .then(result => {
+        console.log(" School logout :- "+JSON.stringify(result));
+        props.setLiveStudentList(result.data);
+        abortController.abort();
+    })
+    props.logoutCurrentSchool()
   }
 
     
@@ -45,7 +48,7 @@ export default function LogoutPrompt (props) {
     </DialogContent>
     <DialogActions>
       <Button onClick={props.handleClose}>Cancel</Button>
-      <Button onClick={props.logoutCurrentSchool} autoFocus>
+      <Button onClick={logoutCurrentSchool} autoFocus>
         Logout
       </Button>
     </DialogActions>

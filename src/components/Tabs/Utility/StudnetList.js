@@ -22,18 +22,6 @@ import { getListOfStudent ,getListOfStudentByClass} from '../../../api/studentAp
 
 export default function StudentList(props) {
 
-  const style = {
-    position: 'absolute',
-    top: 0,
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 450,
-    height:'80%',
-    bgcolor: 'background.paper',
-    border: '0px solid #000',
-    boxShadow: 4,
-    p: 4,
-  };
 
   const style1 = {
     position: 'absolute',

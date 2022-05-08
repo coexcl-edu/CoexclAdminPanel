@@ -29,7 +29,7 @@ export default function SignIn() {
     const vertical = 'top', horizontal = 'center';
 
   
-    const {setNotificationList,setLiveStudentList,setIsLiveClassesTabVisible,loogedInSchoolDetails , setLoggedInSchoolDetails,selectedTab , SetselectedTab ,isLogedIn , setIsLogedIn ,isHomeTabVisible , setIsHomeTabVisible,isStudentTabVisible, setIsStudentTabVisible ,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,logeedInAuthToken, setLoggedInAuthToken}= React.useContext(AppContext);
+    const {setIsLiveClassesTabVisible , setLoggedInSchoolDetails , SetselectedTab ,isLogedIn , setIsLogedIn  , setIsHomeTabVisible, setIsStudentTabVisible ,setIsLoginTabVisible , setLoggedInAuthToken}= React.useContext(AppContext);
   
 
 

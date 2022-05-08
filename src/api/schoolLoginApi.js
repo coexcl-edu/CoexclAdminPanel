@@ -20,3 +20,25 @@ export function callforLgoing(id,password) {
     ).catch(error => console.warn("Error while SchoolLogin "+error));
 
 }
+
+
+export function calllogout(authorizationCode) {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", authorizationCode);
+    myHeaders.append("Content-Type","application/json")
+
+    var requestOptions = {
+    method: 'POST',
+    redirect: 'follow',
+    headers: myHeaders
+    };
+    return fetch(`https://school-coexcl-api.el.r.appspot.com/api/school/logout`,requestOptions)
+    .then((response) => response.json())
+    .then((responseData) => {
+        console.log("Logout - "+responseData);
+        return responseData;
+      }
+    ).catch(error => console.warn("Error while SchoolLogin "+error));
+
+}

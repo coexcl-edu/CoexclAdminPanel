@@ -10,9 +10,9 @@ import MainDrawer from '../main/MainDrawer';
 export default function LoginTab(props) {
   const [schoolId , setSchoolId] = React.useState("");
   const [schoolPassword,setSchoolPassword] = React.useState("");
-  //const [logeedInAuthToken, setLoggedInAuthToken] = React.useState("");
 
-  const {setNotificationList,setLiveStudentList,setIsLiveClassesTabVisible,loogedInSchoolDetails , setLoggedInSchoolDetails,selectedTab , SetselectedTab ,isLogedIn , setIsLogedIn ,isHomeTabVisible , setIsHomeTabVisible,isStudentTabVisible, setIsStudentTabVisible ,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,logeedInAuthToken, setLoggedInAuthToken}= React.useContext(AppContext);
+
+  const {setNotificationList,setLiveStudentList,setIsLiveClassesTabVisible,loogedInSchoolDetails , setLoggedInSchoolDetails , SetselectedTab ,isLogedIn , setIsLogedIn  , setIsHomeTabVisible, setIsStudentTabVisible ,setIsLoginTabVisible , setLoggedInAuthToken}= React.useContext(AppContext);
 
   const onSchoolCodeChange = (event)=>{
       const schoolId = event.currentTarget.value; 

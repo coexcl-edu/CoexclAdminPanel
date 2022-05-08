@@ -19,12 +19,10 @@ import HomeTab from '../Tabs/HomeTab';
 import StudentTab from '../Tabs/StudentTab';
 import { AppContext } from '../../context/AppContext';
 import LoginIcon from '@mui/icons-material/Login';
-import LoginTab from '../Tabs/LoginTab';
 import LiveClassesTab from '../Tabs/LiveClassesTab';
 import PersonPinTwoToneIcon from '@mui/icons-material/PersonPinTwoTone';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import CampaignTwoToneIcon from '@mui/icons-material/CampaignTwoTone';
-import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone';
 import LiveTvTwoToneIcon from '@mui/icons-material/LiveTvTwoTone';
 import NotificationTab from '../Tabs/NotificationTab';
 import Avatar from '@mui/material/Avatar';
@@ -101,7 +99,7 @@ export default function MainDrawer() {
 
   const [logoutPromptOpen, setLogoutPromptOpen] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const {selectedTab , SetselectedTab , isHomeTabVisible , setIsHomeTabVisible ,isStudentTabVisible, setIsStudentTabVisible,isLoginTabVisible,setIsLoginTabVisible ,logedInDetails ,setLogedIngDetails ,setIsLogedIn,isLogedIn ,isLiveClassesTabVisible,setIsLiveClassesTabVisible ,isNotificationTabVisible,setIsNotificationTabVisible ,notificationList,setNotificationList,logeedInAuthToken, setLoggedInAuthToken, loogedInSchoolDetails , setLoggedInSchoolDetails, setLiveStudentList} = React.useContext(AppContext);
+  const {selectedTab , SetselectedTab , isHomeTabVisible , setIsHomeTabVisible ,isStudentTabVisible, setIsStudentTabVisible,isLoginTabVisible,setIsLoginTabVisible  ,setIsLogedIn ,isLiveClassesTabVisible,setIsLiveClassesTabVisible ,isNotificationTabVisible,setIsNotificationTabVisible ,setNotificationList, setLoggedInAuthToken , setLoggedInSchoolDetails, setLiveStudentList} = React.useContext(AppContext);
 
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
